@@ -21,17 +21,9 @@ class Expector
     //   throw new Exception("No expectation named ".$name);
     // }
 
-    switch ($name) {
-      case 'toBe':
-        ToBeExpectation::matcher($this->subject, $arguments);
-        break;
-      case 'toRaise':
-        ToRaiseExpectation::matcher($this->subject, $arguments);
-        break;
-      case 'toContain':
-        ToContainExpectation::matcher($this->subject, $arguments);
-        break;
-      default:
+	if( array_key_exists($name, $expectations) ) {
+	    $expectations[$name]::matcher($this->subject, $arguments);
+	} else {
         throw new Exception("No expectation named ".$name);
     }
   }
