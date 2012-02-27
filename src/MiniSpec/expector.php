@@ -14,18 +14,11 @@ class Expector
 
   public function __call($name, $arguments)
   {
-    // try {
-    //   $expectation = new $this->expectations[$name];
-    //   $expectation->matcher($this->subject, $arguments);
-    // } catch(Exception $e) {
-    //   throw new Exception("No expectation named ".$name);
-    // }
-
     if( array_key_exists($name, $this->expectations) ) {
-        $matcher = new $this->expectations[$name];
-        $matcher->matcher($this->subject, $arguments);
+      $matcher = new $this->expectations[$name];
+      $matcher->matcher($this->subject, $arguments);
     } else {
-        throw new Exception("No expectation named ".$name);
+      throw new Exception("No expectation named ".$name);
     }
   }
 }
