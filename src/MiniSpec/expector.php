@@ -21,9 +21,10 @@ class Expector
     //   throw new Exception("No expectation named ".$name);
     // }
 
-	if( array_key_exists($name, $expectations) ) {
-	    $expectations[$name]::matcher($this->subject, $arguments);
-	} else {
+    if( array_key_exists($name, $this->expectations) ) {
+        $matcher = new $this->expectations[$name];
+        $matcher->matcher($this->subject, $arguments);
+    } else {
         throw new Exception("No expectation named ".$name);
     }
   }
