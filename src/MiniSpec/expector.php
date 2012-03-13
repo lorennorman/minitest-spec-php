@@ -4,6 +4,7 @@ class Expector
 {
   private $subject;
   private $expectations = array("toBe"      => "ToBeExpectation",
+                                "notToBe"   => "NotToBeExpectation",
                                 "toContain" => "ToContainExpectation",
                                 "toRaise"   => "ToRaiseExpectation");
 

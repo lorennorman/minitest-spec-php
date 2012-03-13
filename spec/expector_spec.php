@@ -2,7 +2,7 @@
 
 require_once('spec_helper.php');
 
-describe("Expector DSL", function()
+describe("Expector Dsl", function()
 {
   describe("expect() method", function()
   {
@@ -12,7 +12,7 @@ describe("Expector DSL", function()
 
       expect(function() {
         expect("false")->toBe("true");
-      })->toRaise("false should be true");
+      })->toRaise("Expected 'false' to be 'true'.");
     });
   });
 });
