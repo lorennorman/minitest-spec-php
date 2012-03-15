@@ -82,8 +82,8 @@ describe("Describe", function() {
       $desc->execute();
 
       expect($spec1Ran)->toBe(true);
-      expect($spec1Ran)->toBe(true);
-      expect($spec1Ran)->toBe(true);
+      expect($spec2Ran)->toBe(true);
+      expect($spec3Ran)->toBe(true);
     });
   });
 
