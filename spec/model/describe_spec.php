@@ -88,7 +88,49 @@ describe("Describe", function() {
   });
 
   describe("adding befores", function() {
-    it("can add befores", function() {});
+    it("can add befores", function() {
+      $desc = subject();
+      
+      $before1Ran = false;
+      $before2Ran = false;
+      $before3Ran = false;
+
+      $before1 = new Before(function() use(&$before1Ran) { $before1Ran = true; });
+      $before2 = new Before(function() use(&$before2Ran) { $before2Ran = true; });
+      $before3 = new Before(function() use(&$before3Ran) { $before3Ran = true; });
+
+      $desc->addBefore($before1);
+      $desc->addBefore($before2);
+      $desc->addBefore($before3);
+
+      $desc->execute();
+
+      expect($desc->befores)->toContain($before1);
+      expect($desc->befores)->toContain($before2);
+      expect($desc->befores)->toContain($before3);
+    });
+    
+    it("executes them all", function() {
+      $desc = subject();
+
+      $before1Ran = false;
+      $before2Ran = false;
+      $before3Ran = false;
+
+      $before1 = new Before(function() use(&$before1Ran) { $before1Ran = true; });
+      $before2 = new Before(function() use(&$before2Ran) { $before2Ran = true; });
+      $before3 = new Before(function() use(&$before3Ran) { $before3Ran = true; });
+
+      $desc->addBefore($before1);
+      $desc->addBefore($before2);
+      $desc->addBefore($before3);
+
+      $desc->execute();
+
+      expect($before1Ran)->toBe(true);
+      expect($before2Ran)->toBe(true);
+      expect($before3Ran)->toBe(true);
+    });
   });
 
   describe("adding afters", function() {
