@@ -16,6 +16,7 @@ require_once('expector.php');
 require_once('contexts/spec_suite.php');
 require_once('contexts/describe.php');
 require_once('contexts/spec.php');
+require_once('contexts/before.php');
 
 # ...and run whatever behaviors have been specified at the end!
 register_shutdown_function(function() {
